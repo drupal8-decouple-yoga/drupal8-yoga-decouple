@@ -1,0 +1,11 @@
+redoc:
+  js:
+    'https://rebilly.github.io/ReDoc/releases/latest/redoc.min.js': {}
+
+redoc_attr:
+  js:
+    'js/redoc.js': {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - openapi_ui_swagger/swagger_ui
