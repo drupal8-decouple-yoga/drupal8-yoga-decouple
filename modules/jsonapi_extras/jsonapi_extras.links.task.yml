@@ -1,0 +1,9 @@
+jsonapi_extras.resources:
+  title: 'Resources'
+  route_name: entity.jsonapi_resource_config.collection
+  base_route: entity.jsonapi_resource_config.collection
+
+jsonapi_extras.settings:
+  title: 'Settings'
+  route_name: jsonapi_extras.settings
+  base_route: entity.jsonapi_resource_config.collection
