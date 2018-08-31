@@ -1,0 +1,19 @@
+{
+  "name": "drupal/subrequests",
+  "description": "Add a front controller that you can use to make subrequests.",
+  "type": "drupal-module",
+  "require": {
+    "skyscanner/jsonpath": "^1.0"
+  },
+  "require-dev": {
+    "justinrainbow/json-schema": "^4.1"
+  },
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Mateu Aguiló Bosch",
+      "email": "mateu.aguilo.bosch@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev"
+}

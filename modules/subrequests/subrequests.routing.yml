@@ -1,0 +1,10 @@
+subrequests.front-controller:
+  path: '/subrequests'
+  defaults:
+    _title: 'Returns bulk execution of multiple requests'
+    _controller: '\Drupal\subrequests\Controller\FrontController::handle'
+  methods: [GET, POST]
+  options:
+    _auth: ['basic_auth', 'cookie', 'oauth2', 'token_bearer']
+  requirements:
+    _permission: 'issue subrequests'

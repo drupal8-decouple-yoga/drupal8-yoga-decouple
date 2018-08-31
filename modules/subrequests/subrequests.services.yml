@@ -1,0 +1,31 @@
+services:
+  subrequests.blueprint_manager:
+    class: Drupal\subrequests\Blueprint\BlueprintManager
+    arguments: ['@serializer']
+  logger.channel.subrequests:
+    parent: logger.channel_base
+    arguments: ['subrequests']
+  subrequests.json_path_replacer:
+    class: Drupal\subrequests\JsonPathReplacer
+  subrequests.subrequests_manager:
+    class: Drupal\subrequests\SubrequestsManager
+    arguments: ['@http_kernel', '@serializer', '@subrequests.json_path_replacer']
+  subrequests.denormalizer.blueprint.json:
+    class: Drupal\subrequests\Normalizer\JsonBlueprintDenormalizer
+    arguments: ['@logger.channel.subrequests']
+    tags:
+      - { name: normalizer, priority: 0 }
+    calls:
+      - [setValidator, []]
+  subrequests.denormalizer.subrequest.json:
+    class: Drupal\subrequests\Normalizer\JsonSubrequestDenormalizer
+    tags:
+      - { name: normalizer, priority: 0 }
+  subrequests.normalizer.multiresponse:
+    class: Drupal\subrequests\Normalizer\MultiresponseNormalizer
+    tags:
+      - { name: normalizer, priority: 0 }
+  subrequests.normalizer.multiresponse_json:
+    class: Drupal\subrequests\Normalizer\MultiresponseJsonNormalizer
+    tags:
+      - { name: normalizer, priority: 0 }

@@ -1,0 +1,13 @@
+name: Subrequests
+type: module
+description: 'Add a front controller that you can use to make subrequests.'
+# core: 8.x
+dependencies:
+  - drupal:serialization
+package: Web services
+
+# Information added by Drupal.org packaging script on 2018-08-11
+version: '8.x-2.0'
+core: '8.x'
+project: 'subrequests'
+datestamp: 1533972184
