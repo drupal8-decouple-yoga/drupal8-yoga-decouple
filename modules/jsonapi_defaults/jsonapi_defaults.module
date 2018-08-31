@@ -1,0 +1,142 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\jsonapi_extras\Entity\JsonapiResourceConfig;
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function jsonapi_defaults_form_jsonapi_resource_config_add_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  _jsonapi_defaults_form_alter($form, $form_state);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function jsonapi_defaults_form_jsonapi_resource_config_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  _jsonapi_defaults_form_alter($form, $form_state);
+}
+
+/**
+ * Build JSON API Defaults part of the form.
+ *
+ * @param array $form
+ *   Drupal form array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   Drupal form_state object.
+ *
+ * @return array
+ *   Drupal form array
+ */
+function _jsonapi_defaults_form_alter(array &$form, FormStateInterface $form_state) {
+
+  /** @var \Drupal\jsonapi_extras\Entity\JsonapiResourceConfig $config_resource */
+  $config_resource = $form_state->getFormObject()->getEntity();
+
+  $form['bundle_wrapper']['fields_wrapper']['defaults'] = [
+    '#type' => 'details',
+    '#title' => t('Defaults'),
+    '#open' => FALSE,
+    '#description' => t('Sets resource default parameters.'),
+  ];
+
+  $includes = $config_resource->getThirdPartySetting('jsonapi_defaults', 'default_include');
+  $form['bundle_wrapper']['fields_wrapper']['defaults']['default_include'] = [
+    '#type' => 'textarea',
+    '#title' => 'Default include list',
+    '#default_value' => $includes ? implode("\n", $includes) : '',
+    '#description' => t('Specify includes here (For example uid or field_image). Enter one include per line.'),
+  ];
+
+  $form['bundle_wrapper']['fields_wrapper']['defaults']['default_filter'] = [
+    '#type' => 'textarea',
+    '#title' => 'Default filter list',
+    '#default_value' => _jsonapi_defaults_convert_value($config_resource->getThirdPartySetting('jsonapi_defaults', 'default_filter')),
+    '#description' => t('Enter one filter per line, in the format key|value. For example:<br />
+        filter[titleFilter][condition][path]|title<br />
+        filter[titleFilter][condition][value]|Comis Commodo Ymo<br />'),
+  ];
+
+  $form['#entity_builders'][] = 'jsonapi_defaults_form_jsonapi_resource_config_form_builder';
+
+}
+
+/**
+ * Entity builder for json api resource configuration entity.
+ */
+function jsonapi_defaults_form_jsonapi_resource_config_form_builder($entity_type, JsonapiResourceConfig $config_resource, &$form, FormStateInterface $form_state) {
+  if ($raw_value = $form_state->getValue('default_filter')) {
+    $value = _jsonapi_defaults_convert_rawvalue($raw_value);
+    $config_resource->setThirdPartySetting('jsonapi_defaults', 'default_filter', $value);
+  }
+  else {
+    $config_resource->unsetThirdPartySetting('jsonapi_defaults', 'default_filter');
+  }
+
+  if ($raw_value = $form_state->getValue('default_include')) {
+    $include = array_map('trim', preg_split('/\r\n?|\n/', $raw_value));
+    $include = array_filter($include);
+    $config_resource->setThirdPartySetting('jsonapi_defaults', 'default_include', $include);
+  }
+  else {
+    $config_resource->unsetThirdPartySetting('jsonapi_defaults', 'default_include');
+  }
+
+}
+
+/**
+ * Convert default parameters value to array (used in config).
+ *
+ * @param string|null $raw_value
+ *   Raw value from textarea.
+ *
+ * @return array
+ *   Value to be saved into config.
+ */
+function _jsonapi_defaults_convert_rawvalue($raw_value) {
+  $value = [];
+  $raw_value = (!is_string($raw_value)) ? '' : $raw_value;
+  foreach (preg_split('/\r\n|[\r\n]/', $raw_value) as $param) {
+    if (strpos($param, '|') !== FALSE) {
+      $a = explode("|", $param);
+      $key = $a[0];
+      $val = $a[1];
+      if ($key == 'include') {
+        $value[$key] = trim($val);
+      }
+      elseif (preg_match("/^filter.+/", $key)) {
+        $key = str_replace('filter[', '', $key);
+        $key = explode('][', $key);
+        $value['filter:' . trim(implode('_', $key), '[]')] = $val;
+      }
+
+    }
+  }
+  return $value;
+}
+
+/**
+ * Convert default parameters value to raw value (textarea).
+ *
+ * @param array|null $value
+ *   Value from config.
+ *
+ * @return string
+ *   Value to be shown in textarea.
+ */
+function _jsonapi_defaults_convert_value($value) {
+  $raw_value = "";
+  if (is_array($value)) {
+    foreach ($value as $key => $val) {
+      if ($key == 'include') {
+        $raw_value .= "$key|$val\n";
+      }
+      elseif (preg_match("/^filter.+/", $key)) {
+        $key = implode("][", explode("_", preg_replace("/^filter:/", '', $key)));
+        $raw_value .= "filter[$key]|$val\n";
+      }
+    }
+  }
+  return $raw_value;
+}

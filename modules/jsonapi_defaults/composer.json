@@ -1,0 +1,25 @@
+{
+  "name": "drupal/jsonapi_defaults",
+  "description": "JSON API Defaults",
+  "type": "drupal-module",
+  "homepage": "https://www.drupal.org/project/jsonapi_defaults",
+  "authors": [
+    {
+      "name": "Martin Kolar",
+      "homepage": "https://www.drupal.org/u/mkolar"
+    },
+    {
+      "name": "Karel Majzlik",
+      "homepage": "https://www.drupal.org/u/karlos007"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/jsonapi_defaults",
+    "source": "http://git.drupal.org/project/jsonapi_defaults.git"
+  },
+  "license": "GPL-2.0+",
+  "require": {
+    "drupal/jsonapi": "^1.1",
+    "drupal/jsonapi_extras": "1.x-dev || 2.x-dev"
+  }
+}
