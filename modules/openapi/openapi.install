@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Installation, schema, and update related functions for the OpenAPI module.
+ */
+
+/**
+ * Replace the OpenAPI Doc UI modules with the OpenAPI UI equivilants.
+ */
+function openapi_update_8100(&$sandbox) {
+  $module_handler = \Drupal::service('module_handler');
+  // get the available modules.
+  $available_modules = system_rebuild_module_data();
+
+  // Verify the replacements that need to be made.
+  $module_replacements = [
+    'openapi_swagger_ui' => 'openapi_ui_swagger',
+    'openapi_redoc' => 'openapi_ui_redoc',
+  ];
+  foreach ($module_replacements as $legacy => $replacement) {
+    if ($module_handler->moduleExists($legacy)) {
+      if (!array_key_exists($replacement, $available_modules)) {
+        // Require the replacement module to be downloaded.
+        $context = [
+          '%legacy' => $legacy,
+          '%replacement' => $replacement,
+        ];
+        $message = t('The %legacy module has been replaced with %replacement. Please ensure the %replacement module has downloaded to your drupal site, and rerun the the database updates script.', $context);
+        throw new DrupalUpdateException($message);
+      }
+    }
+    else {
+      // Remove replacement if not installed.
+      unset ($module_replacements[$legacy]);
+    }
+  }
+
+  if (!empty($module_replacements)) {
+    // Ensure that the openapi_ui module is also present.
+    if (!array_key_exists('openapi_ui', $available_modules)) {
+      $context = [
+        '%legacy' => $legacy,
+        '%replacement' => $replacement,
+      ];
+      $message = t('The Docs UI Module(s) <em>%modules</em> have been moved out of OpenAPI to independent projects, and now require the <em>OpenAPI UI</em> module, please ensure that it is present for installation.', $context);
+      throw new DrupalUpdateException($message);
+    }
+    // Remove the relevant modules.
+    $module_installer = \Drupal::service('module_installer');
+    $to_install = array_values($module_replacements);
+    array_unshift($to_install, 'openapi_ui');
+    $module_installer->install(array_values($to_install), TRUE);
+    $module_installer->uninstall(array_keys($module_replacements), TRUE);
+  }
+
+}

@@ -1,0 +1,1492 @@
+{
+    "definitions": {
+        "openapi_test_entity": {
+            "type": "object",
+            "title": "openapi_test_entity Schema",
+            "description": "Describes the payload for 'openapi_test_entity' entities.",
+            "properties": {
+                "id": {
+                    "type": "array",
+                    "title": "ID",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "integer",
+                                "title": "Integer value"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "uuid": {
+                    "type": "array",
+                    "title": "UUID",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Text value",
+                                "maxLength": 128
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "type": {
+                    "type": "array",
+                    "title": "OpenApi Test Entity type",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "target_id": {
+                                "type": "string",
+                                "title": "OpenApi Test Entity type ID"
+                            }
+                        },
+                        "required": [
+                            "target_id"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "name": {
+                    "type": "array",
+                    "title": "Name",
+                    "description": "The name of the OpenApi Test Entity entity.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Text value",
+                                "maxLength": 50
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "default": [
+                        {
+                            "value": ""
+                        }
+                    ],
+                    "maxItems": 1
+                }
+            },
+            "required": [
+                "id",
+                "uuid",
+                "type"
+            ],
+            "discriminator": "type"
+        },
+        "openapi_test_entity:camelids": {
+            "allOf": [
+                {
+                    "$ref": "#\/definitions\/openapi_test_entity"
+                },
+                {
+                    "type": "object",
+                    "title": "openapi_test_entity:camelids Schema",
+                    "description": "Describes the payload for 'openapi_test_entity' entities of the 'camelids' bundle.",
+                    "properties": {
+                        "field_test_openapi_test_entity": {
+                            "type": "array",
+                            "title": "Test field",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "string",
+                                        "title": "Text",
+                                        "maxLength": 255
+                                    },
+                                    "format": {
+                                        "type": "string",
+                                        "title": "Text format"
+                                    }
+                                },
+                                "required": [
+                                    "value"
+                                ]
+                            },
+                            "maxItems": 1
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "uuid",
+                        "type"
+                    ]
+                }
+            ]
+        },
+        "openapi_test_entity:openapi_test_entity_test": {
+            "allOf": [
+                {
+                    "$ref": "#\/definitions\/openapi_test_entity"
+                },
+                {
+                    "type": "object",
+                    "title": "openapi_test_entity:openapi_test_entity_test Schema",
+                    "description": "Describes the payload for 'openapi_test_entity' entities of the 'openapi_test_entity_test' bundle.",
+                    "properties": {
+                        "field_test_openapi_test_entity": {
+                            "type": "array",
+                            "title": "Test field",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "string",
+                                        "title": "Text",
+                                        "maxLength": 255
+                                    },
+                                    "format": {
+                                        "type": "string",
+                                        "title": "Text format"
+                                    }
+                                },
+                                "required": [
+                                    "value"
+                                ]
+                            },
+                            "maxItems": 1
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "uuid",
+                        "type"
+                    ]
+                }
+            ]
+        },
+        "openapi_test_entity_type": {
+            "type": "object",
+            "title": "openapi_test_entity_type Schema",
+            "description": "Describes the payload for openapi_test_entity_type entities."
+        },
+        "taxonomy_term": {
+            "type": "object",
+            "title": "taxonomy_term Schema",
+            "description": "Describes the payload for 'taxonomy_term' entities.",
+            "properties": {
+                "tid": {
+                    "type": "array",
+                    "title": "Term ID",
+                    "description": "The term ID.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "integer",
+                                "title": "Integer value"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "uuid": {
+                    "type": "array",
+                    "title": "UUID",
+                    "description": "The term UUID.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Text value",
+                                "maxLength": 128
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "langcode": {
+                    "type": "array",
+                    "title": "Language",
+                    "description": "The term language code.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Language code"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "maxItems": 1
+                },
+                "vid": {
+                    "type": "array",
+                    "title": "Vocabulary",
+                    "description": "The vocabulary to which the term is assigned.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "target_id": {
+                                "type": "string",
+                                "title": "Taxonomy vocabulary ID"
+                            }
+                        },
+                        "required": [
+                            "target_id"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "name": {
+                    "type": "array",
+                    "title": "Name",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Text value",
+                                "maxLength": 255
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "description": {
+                    "type": "array",
+                    "title": "Description",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Text"
+                            },
+                            "format": {
+                                "type": "string",
+                                "title": "Text format"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "maxItems": 1
+                },
+                "weight": {
+                    "type": "array",
+                    "title": "Weight",
+                    "description": "The weight of this term in relation to other terms.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "integer",
+                                "title": "Integer value"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "default": [
+                        {
+                            "value": 0
+                        }
+                    ],
+                    "maxItems": 1
+                },
+                "parent": {
+                    "type": "array",
+                    "title": "Term Parents",
+                    "description": "The parents of this term.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "target_id": {
+                                "type": "integer",
+                                "title": "Taxonomy term ID"
+                            }
+                        },
+                        "required": [
+                            "target_id"
+                        ],
+                        "title": "Taxonomy term",
+                        "description": "The referenced entity"
+                    }
+                },
+                "changed": {
+                    "type": "array",
+                    "title": "Changed",
+                    "description": "The time that the term was last edited.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number",
+                                "title": "Timestamp value",
+                                "format": "utc-millisec"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "maxItems": 1
+                },
+                "default_langcode": {
+                    "type": "array",
+                    "title": "Default translation",
+                    "description": "A flag indicating whether this is the default translation.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "boolean",
+                                "title": "Boolean value"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "default": [
+                        {
+                            "value": true
+                        }
+                    ],
+                    "maxItems": 1
+                }
+            },
+            "required": [
+                "tid",
+                "uuid",
+                "vid",
+                "name"
+            ],
+            "discriminator": "vid"
+        },
+        "taxonomy_term:camelids": {
+            "allOf": [
+                {
+                    "$ref": "#\/definitions\/taxonomy_term"
+                },
+                {
+                    "type": "object",
+                    "title": "taxonomy_term:camelids Schema",
+                    "description": "Describes the payload for 'taxonomy_term' entities of the 'camelids' bundle.",
+                    "properties": {
+                        "field_test_taxonomy_term": {
+                            "type": "array",
+                            "title": "Test field",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "string",
+                                        "title": "Text",
+                                        "maxLength": 255
+                                    },
+                                    "format": {
+                                        "type": "string",
+                                        "title": "Text format"
+                                    }
+                                },
+                                "required": [
+                                    "value"
+                                ]
+                            },
+                            "maxItems": 1
+                        }
+                    },
+                    "required": [
+                        "tid",
+                        "uuid",
+                        "vid",
+                        "name"
+                    ]
+                }
+            ]
+        },
+        "taxonomy_term:taxonomy_term_test": {
+            "allOf": [
+                {
+                    "$ref": "#\/definitions\/taxonomy_term"
+                },
+                {
+                    "type": "object",
+                    "title": "taxonomy_term:taxonomy_term_test Schema",
+                    "description": "Describes the payload for 'taxonomy_term' entities of the 'taxonomy_term_test' bundle.",
+                    "properties": {
+                        "field_test_taxonomy_term": {
+                            "type": "array",
+                            "title": "Test field",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "string",
+                                        "title": "Text",
+                                        "maxLength": 255
+                                    },
+                                    "format": {
+                                        "type": "string",
+                                        "title": "Text format"
+                                    }
+                                },
+                                "required": [
+                                    "value"
+                                ]
+                            },
+                            "maxItems": 1
+                        }
+                    },
+                    "required": [
+                        "tid",
+                        "uuid",
+                        "vid",
+                        "name"
+                    ]
+                }
+            ]
+        },
+        "taxonomy_vocabulary": {
+            "type": "object",
+            "title": "taxonomy_vocabulary Schema",
+            "description": "Describes the payload for taxonomy_vocabulary entities."
+        },
+        "user": {
+            "type": "object",
+            "title": "user Schema",
+            "description": "Describes the payload for 'user' entities.",
+            "properties": {
+                "uid": {
+                    "type": "array",
+                    "title": "User ID",
+                    "description": "The user ID.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "integer",
+                                "title": "Integer value"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "uuid": {
+                    "type": "array",
+                    "title": "UUID",
+                    "description": "The user UUID.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Text value",
+                                "maxLength": 128
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "langcode": {
+                    "type": "array",
+                    "title": "Language code",
+                    "description": "The user language code.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Language code"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "maxItems": 1
+                },
+                "preferred_langcode": {
+                    "type": "array",
+                    "title": "Preferred language code",
+                    "description": "The user\\'s preferred language code for receiving emails and viewing the site.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Language code"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "maxItems": 1
+                },
+                "preferred_admin_langcode": {
+                    "type": "array",
+                    "title": "Preferred admin language code",
+                    "description": "The user\\'s preferred language code for viewing administration pages.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Language code"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "default": [
+                        {
+                            "value": ""
+                        }
+                    ],
+                    "maxItems": 1
+                },
+                "name": {
+                    "type": "array",
+                    "title": "Name",
+                    "description": "The name of this user.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Text value",
+                                "maxLength": 255
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "pass": {
+                    "type": "array",
+                    "title": "Password",
+                    "description": "The password of this user (hashed).",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "The hashed password",
+                                "maxLength": 255
+                            },
+                            "existing": {
+                                "type": "string",
+                                "title": "Existing password"
+                            },
+                            "pre_hashed": {
+                                "type": "boolean",
+                                "title": "Determines if a password needs hashing"
+                            }
+                        }
+                    },
+                    "maxItems": 1
+                },
+                "mail": {
+                    "type": "array",
+                    "title": "Email",
+                    "description": "The email of this user.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Email",
+                                "format": "email"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "default": [
+                        {
+                            "value": ""
+                        }
+                    ],
+                    "maxItems": 1
+                },
+                "timezone": {
+                    "type": "array",
+                    "title": "Timezone",
+                    "description": "The timezone of this user.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Text value",
+                                "maxLength": 32
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "maxItems": 1
+                },
+                "status": {
+                    "type": "array",
+                    "title": "User status",
+                    "description": "Whether the user is active or blocked.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "boolean",
+                                "title": "Boolean value"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "default": [
+                        {
+                            "value": false
+                        }
+                    ],
+                    "maxItems": 1
+                },
+                "created": {
+                    "type": "array",
+                    "title": "Created",
+                    "description": "The time that the user was created.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number",
+                                "title": "Timestamp value",
+                                "format": "utc-millisec"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "maxItems": 1
+                },
+                "changed": {
+                    "type": "array",
+                    "title": "Changed",
+                    "description": "The time that the user was last edited.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number",
+                                "title": "Timestamp value",
+                                "format": "utc-millisec"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "maxItems": 1
+                },
+                "access": {
+                    "type": "array",
+                    "title": "Last access",
+                    "description": "The time that the user last accessed the site.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number",
+                                "title": "Timestamp value",
+                                "format": "utc-millisec"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "default": [
+                        {
+                            "value": 0
+                        }
+                    ],
+                    "maxItems": 1
+                },
+                "login": {
+                    "type": "array",
+                    "title": "Last login",
+                    "description": "The time that the user last logged in.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "number",
+                                "title": "Timestamp value",
+                                "format": "utc-millisec"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "default": [
+                        {
+                            "value": 0
+                        }
+                    ],
+                    "maxItems": 1
+                },
+                "init": {
+                    "type": "array",
+                    "title": "Initial email",
+                    "description": "The email address used for initial account creation.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Email",
+                                "format": "email"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "default": [
+                        {
+                            "value": ""
+                        }
+                    ],
+                    "maxItems": 1
+                },
+                "roles": {
+                    "type": "array",
+                    "title": "Roles",
+                    "description": "The roles the user has.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "target_id": {
+                                "type": "string",
+                                "title": "Role ID"
+                            }
+                        },
+                        "required": [
+                            "target_id"
+                        ]
+                    }
+                },
+                "default_langcode": {
+                    "type": "array",
+                    "title": "Default translation",
+                    "description": "A flag indicating whether this is the default translation.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "boolean",
+                                "title": "Boolean value"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "default": [
+                        {
+                            "value": true
+                        }
+                    ],
+                    "maxItems": 1
+                }
+            },
+            "required": [
+                "uid",
+                "uuid",
+                "name"
+            ]
+        }
+    },
+    "paths": {
+        "\/entity\/openapi_test_entity\/{openapi_test_entity}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json",
+                            "hal_json"
+                        ],
+                        "required": true,
+                        "description": "Request format"
+                    },
+                    {
+                        "name": "openapi_test_entity",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The id,id, of the openapi_test_entity."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#\/definitions\/openapi_test_entity"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a OpenApi Test Entity",
+                "operationId": "entity:openapi_test_entity:GET"
+            },
+            "patch": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json",
+                            "hal_json"
+                        ],
+                        "required": true,
+                        "description": "Request format"
+                    },
+                    {
+                        "name": "openapi_test_entity",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The id,id, of the openapi_test_entity."
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The OpenApi Test Entity object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#\/definitions\/openapi_test_entity"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Patch a OpenApi Test Entity",
+                "operationId": "entity:openapi_test_entity:PATCH"
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json",
+                            "hal_json"
+                        ],
+                        "required": true,
+                        "description": "Request format"
+                    },
+                    {
+                        "name": "openapi_test_entity",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The id,id, of the openapi_test_entity."
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Entity deleted"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Delete a OpenApi Test Entity",
+                "operationId": "entity:openapi_test_entity:DELETE"
+            }
+        },
+        "\/entity\/openapi_test_entity": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json",
+                            "hal_json"
+                        ],
+                        "required": true,
+                        "description": "Request format"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The OpenApi Test Entity object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#\/definitions\/openapi_test_entity"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Entity created",
+                        "schema": {
+                            "$ref": "#\/definitions\/openapi_test_entity"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Post a OpenApi Test Entity",
+                "operationId": "entity:openapi_test_entity:POST"
+            }
+        },
+        "\/entity\/openapi_test_entity_type\/{openapi_test_entity_type}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "required": true,
+                        "description": "Request format",
+                        "default": "json"
+                    },
+                    {
+                        "name": "openapi_test_entity_type",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The id,id, of the openapi_test_entity_type."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#\/definitions\/openapi_test_entity_type"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a OpenApi Test Entity type",
+                "operationId": "entity:openapi_test_entity_type:GET"
+            }
+        },
+        "\/taxonomy\/term\/{taxonomy_term}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "required": true,
+                        "description": "Request format",
+                        "default": "json"
+                    },
+                    {
+                        "name": "taxonomy_term",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The tid,id, of the taxonomy_term."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#\/definitions\/taxonomy_term"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a Taxonomy term",
+                "operationId": "entity:taxonomy_term:GET"
+            },
+            "patch": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "required": true,
+                        "description": "Request format",
+                        "default": "json"
+                    },
+                    {
+                        "name": "taxonomy_term",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The tid,id, of the taxonomy_term."
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The Taxonomy term object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#\/definitions\/taxonomy_term"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Patch a Taxonomy term",
+                "operationId": "entity:taxonomy_term:PATCH"
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "required": true,
+                        "description": "Request format",
+                        "default": "json"
+                    },
+                    {
+                        "name": "taxonomy_term",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The tid,id, of the taxonomy_term."
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Entity deleted"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Delete a Taxonomy term",
+                "operationId": "entity:taxonomy_term:DELETE"
+            }
+        },
+        "\/taxonomy\/term": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "required": true,
+                        "description": "Request format",
+                        "default": "json"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The Taxonomy term object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#\/definitions\/taxonomy_term"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Entity created",
+                        "schema": {
+                            "$ref": "#\/definitions\/taxonomy_term"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Post a Taxonomy term",
+                "operationId": "entity:taxonomy_term:POST"
+            }
+        },
+        "\/entity\/taxonomy_vocabulary\/{taxonomy_vocabulary}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "required": true,
+                        "description": "Request format",
+                        "default": "json"
+                    },
+                    {
+                        "name": "taxonomy_vocabulary",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The vid,id, of the taxonomy_vocabulary."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#\/definitions\/taxonomy_vocabulary"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a Taxonomy vocabulary",
+                "operationId": "entity:taxonomy_vocabulary:GET"
+            }
+        },
+        "\/user\/{user}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "required": true,
+                        "description": "Request format",
+                        "default": "json"
+                    },
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The uid,id, of the user."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#\/definitions\/user"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a User",
+                "operationId": "entity:user:GET"
+            }
+        }
+    }
+}

@@ -1,0 +1,69 @@
+{
+    "definitions": {
+        "openapi_test_entity_type": {
+            "type": "object",
+            "title": "openapi_test_entity_type Schema",
+            "description": "Describes the payload for openapi_test_entity_type entities."
+        }
+    },
+    "paths": {
+        "\/entity\/openapi_test_entity_type\/{openapi_test_entity_type}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "required": true,
+                        "description": "Request format",
+                        "default": "json"
+                    },
+                    {
+                        "name": "openapi_test_entity_type",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The id,id, of the openapi_test_entity_type."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#\/definitions\/openapi_test_entity_type"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a OpenApi Test Entity type",
+                "operationId": "entity:openapi_test_entity_type:GET"
+            }
+        }
+    }
+}

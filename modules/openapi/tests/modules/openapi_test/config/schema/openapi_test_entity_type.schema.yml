@@ -1,0 +1,12 @@
+openapi_test.openapi_test_entity_type.*:
+  type: config_entity
+  label: 'OpenApi Test Entity type config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string

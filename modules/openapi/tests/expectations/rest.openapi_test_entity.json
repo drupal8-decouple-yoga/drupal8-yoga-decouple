@@ -1,0 +1,410 @@
+{
+    "definitions": {
+        "openapi_test_entity": {
+            "type": "object",
+            "title": "openapi_test_entity Schema",
+            "description": "Describes the payload for 'openapi_test_entity' entities.",
+            "properties": {
+                "id": {
+                    "type": "array",
+                    "title": "ID",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "integer",
+                                "title": "Integer value"
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "uuid": {
+                    "type": "array",
+                    "title": "UUID",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Text value",
+                                "maxLength": 128
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "type": {
+                    "type": "array",
+                    "title": "OpenApi Test Entity type",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "target_id": {
+                                "type": "string",
+                                "title": "OpenApi Test Entity type ID"
+                            }
+                        },
+                        "required": [
+                            "target_id"
+                        ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                },
+                "name": {
+                    "type": "array",
+                    "title": "Name",
+                    "description": "The name of the OpenApi Test Entity entity.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "value": {
+                                "type": "string",
+                                "title": "Text value",
+                                "maxLength": 50
+                            }
+                        },
+                        "required": [
+                            "value"
+                        ]
+                    },
+                    "default": [
+                        {
+                            "value": ""
+                        }
+                    ],
+                    "maxItems": 1
+                }
+            },
+            "required": [
+                "id",
+                "uuid",
+                "type"
+            ],
+            "discriminator": "type"
+        },
+        "openapi_test_entity:camelids": {
+            "allOf": [
+                {
+                    "$ref": "#\/definitions\/openapi_test_entity"
+                },
+                {
+                    "type": "object",
+                    "title": "openapi_test_entity:camelids Schema",
+                    "description": "Describes the payload for 'openapi_test_entity' entities of the 'camelids' bundle.",
+                    "properties": {
+                        "field_test_openapi_test_entity": {
+                            "type": "array",
+                            "title": "Test field",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "string",
+                                        "title": "Text",
+                                        "maxLength": 255
+                                    },
+                                    "format": {
+                                        "type": "string",
+                                        "title": "Text format"
+                                    }
+                                },
+                                "required": [
+                                    "value"
+                                ]
+                            },
+                            "maxItems": 1
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "uuid",
+                        "type"
+                    ]
+                }
+            ]
+        },
+        "openapi_test_entity:openapi_test_entity_test": {
+            "allOf": [
+                {
+                    "$ref": "#\/definitions\/openapi_test_entity"
+                },
+                {
+                    "type": "object",
+                    "title": "openapi_test_entity:openapi_test_entity_test Schema",
+                    "description": "Describes the payload for 'openapi_test_entity' entities of the 'openapi_test_entity_test' bundle.",
+                    "properties": {
+                        "field_test_openapi_test_entity": {
+                            "type": "array",
+                            "title": "Test field",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type": "string",
+                                        "title": "Text",
+                                        "maxLength": 255
+                                    },
+                                    "format": {
+                                        "type": "string",
+                                        "title": "Text format"
+                                    }
+                                },
+                                "required": [
+                                    "value"
+                                ]
+                            },
+                            "maxItems": 1
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "uuid",
+                        "type"
+                    ]
+                }
+            ]
+        }
+    },
+    "paths": {
+        "\/entity\/openapi_test_entity\/{openapi_test_entity}": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json",
+                            "hal_json"
+                        ],
+                        "required": true,
+                        "description": "Request format"
+                    },
+                    {
+                        "name": "openapi_test_entity",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The id,id, of the openapi_test_entity."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#\/definitions\/openapi_test_entity"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Get a OpenApi Test Entity",
+                "operationId": "entity:openapi_test_entity:GET"
+            },
+            "patch": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json",
+                            "hal_json"
+                        ],
+                        "required": true,
+                        "description": "Request format"
+                    },
+                    {
+                        "name": "openapi_test_entity",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The id,id, of the openapi_test_entity."
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The OpenApi Test Entity object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#\/definitions\/openapi_test_entity"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Patch a OpenApi Test Entity",
+                "operationId": "entity:openapi_test_entity:PATCH"
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json",
+                            "hal_json"
+                        ],
+                        "required": true,
+                        "description": "Request format"
+                    },
+                    {
+                        "name": "openapi_test_entity",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "The id,id, of the openapi_test_entity."
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Entity deleted"
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Delete a OpenApi Test Entity",
+                "operationId": "entity:openapi_test_entity:DELETE"
+            }
+        },
+        "\/entity\/openapi_test_entity": {
+            "post": {
+                "parameters": [
+                    {
+                        "name": "_format",
+                        "in": "query",
+                        "type": "string",
+                        "enum": [
+                            "json",
+                            "hal_json"
+                        ],
+                        "required": true,
+                        "description": "Request format"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "The OpenApi Test Entity object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#\/definitions\/openapi_test_entity"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Entity created",
+                        "schema": {
+                            "$ref": "#\/definitions\/openapi_test_entity"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Bad data"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Internal server error."
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Post a OpenApi Test Entity",
+                "operationId": "entity:openapi_test_entity:POST"
+            }
+        }
+    }
+}

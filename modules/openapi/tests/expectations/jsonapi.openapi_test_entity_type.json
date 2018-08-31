@@ -1,0 +1,219 @@
+{
+    "definitions": [],
+    "paths": {
+        "\/openapi_test_entity_type\/openapi_test_entity_type": {
+            "get": {
+                "summary": "collection get",
+                "description": "@todo Add descriptions",
+                "parameters": [
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "type": "array",
+                        "required": false
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "type": "array",
+                        "required": false
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "type": "array",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "summary": "collection post",
+                "description": "@todo Add descriptions",
+                "parameters": [],
+                "responses": []
+            }
+        },
+        "\/openapi_test_entity_type\/openapi_test_entity_type\/{openapi_test_entity_type}": {
+            "get": {
+                "summary": "individual get",
+                "description": "@todo Add descriptions",
+                "parameters": [
+                    {
+                        "name": "openapi_test_entity_type",
+                        "required": true,
+                        "in": "path",
+                        "type": "uuid",
+                        "description": "The uuid of the openapi_test_entity_type openapi_test_entity_type"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "individual patch",
+                "description": "@todo Add descriptions",
+                "parameters": [
+                    {
+                        "name": "openapi_test_entity_type",
+                        "required": true,
+                        "in": "path",
+                        "type": "uuid",
+                        "description": "The uuid of the openapi_test_entity_type openapi_test_entity_type"
+                    }
+                ],
+                "responses": []
+            },
+            "delete": {
+                "summary": "individual delete",
+                "description": "@todo Add descriptions",
+                "parameters": [
+                    {
+                        "name": "openapi_test_entity_type",
+                        "required": true,
+                        "in": "path",
+                        "type": "uuid",
+                        "description": "The uuid of the openapi_test_entity_type openapi_test_entity_type"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Entity deleted"
+                    }
+                }
+            }
+        },
+        "\/openapi_test_entity_type\/openapi_test_entity_type\/{openapi_test_entity_type}\/{related}": {
+            "get": {
+                "summary": "related get",
+                "description": "@todo Add descriptions",
+                "parameters": [
+                    {
+                        "name": "openapi_test_entity_type",
+                        "required": true,
+                        "in": "path",
+                        "type": "uuid",
+                        "description": "The uuid of the openapi_test_entity_type openapi_test_entity_type"
+                    },
+                    {
+                        "name": "related",
+                        "required": true,
+                        "in": "path",
+                        "type": "string",
+                        "description": "The relationship field name"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "\/openapi_test_entity_type\/openapi_test_entity_type\/{openapi_test_entity_type}\/relationships\/{related}": {
+            "get": {
+                "summary": "relationship get",
+                "description": "@todo Add descriptions",
+                "parameters": [
+                    {
+                        "name": "openapi_test_entity_type",
+                        "required": true,
+                        "in": "path",
+                        "type": "uuid",
+                        "description": "The uuid of the openapi_test_entity_type openapi_test_entity_type"
+                    },
+                    {
+                        "name": "related",
+                        "required": true,
+                        "in": "path",
+                        "type": "string",
+                        "description": "The relationship field name"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "summary": "relationship post",
+                "description": "@todo Add descriptions",
+                "parameters": [
+                    {
+                        "name": "openapi_test_entity_type",
+                        "required": true,
+                        "in": "path",
+                        "type": "uuid",
+                        "description": "The uuid of the openapi_test_entity_type openapi_test_entity_type"
+                    },
+                    {
+                        "name": "related",
+                        "required": true,
+                        "in": "path",
+                        "type": "string",
+                        "description": "The relationship field name"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Entity created"
+                    }
+                }
+            },
+            "patch": {
+                "summary": "relationship patch",
+                "description": "@todo Add descriptions",
+                "parameters": [
+                    {
+                        "name": "openapi_test_entity_type",
+                        "required": true,
+                        "in": "path",
+                        "type": "uuid",
+                        "description": "The uuid of the openapi_test_entity_type openapi_test_entity_type"
+                    },
+                    {
+                        "name": "related",
+                        "required": true,
+                        "in": "path",
+                        "type": "string",
+                        "description": "The relationship field name"
+                    }
+                ],
+                "responses": []
+            },
+            "delete": {
+                "summary": "relationship delete",
+                "description": "@todo Add descriptions",
+                "parameters": [
+                    {
+                        "name": "openapi_test_entity_type",
+                        "required": true,
+                        "in": "path",
+                        "type": "uuid",
+                        "description": "The uuid of the openapi_test_entity_type openapi_test_entity_type"
+                    },
+                    {
+                        "name": "related",
+                        "required": true,
+                        "in": "path",
+                        "type": "string",
+                        "description": "The relationship field name"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Entity deleted"
+                    }
+                }
+            }
+        }
+    }
+}

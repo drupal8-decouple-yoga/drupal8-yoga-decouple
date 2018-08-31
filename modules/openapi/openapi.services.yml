@@ -1,0 +1,9 @@
+services:
+  plugin.manager.openapi.generator:
+    class: Drupal\openapi\Plugin\openapi\OpenApiGeneratorManager
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler']
+  openapi.parm_parser:
+    class: Drupal\openapi\ParamConverter\OpenApiParamConverter
+    arguments: ['@plugin.manager.openapi.generator']
+    tags:
+      - { name: paramconverter }
