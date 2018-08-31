@@ -1,0 +1,13 @@
+name: 'JSON API Include'
+type: module
+description: 'Add include data to json output'
+# core: 8.x
+package: 'Custom'
+dependencies:
+  - jsonapi
+
+# Information added by Drupal.org packaging script on 2018-07-21
+version: '8.x-1.0-beta3'
+core: '8.x'
+project: 'jsonapi_include'
+datestamp: 1532157787
